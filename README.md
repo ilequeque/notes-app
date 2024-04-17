@@ -11,9 +11,9 @@ Notes App is a simple iOS application that allows users to create and manage not
 
 ## Screenshots
 <div style="display: flex;">
-    <img src="Screenshots/Screenshot1.png" alt="Screenshot 1" width="400" />
-    <img src="Screenshots/Screenshot2.png" alt="Screenshot 2" width="400" />
-    <img src="Screenshots/Screenshot3.png" alt="Screenshot 3" width="400" />
+    <img src="Screenshots/Screenshot1.png" alt="Screenshot 1" width="200" />
+    <img src="Screenshots/Screenshot2.png" alt="Screenshot 2" width="200" />
+    <img src="Screenshots/Screenshot3.png" alt="Screenshot 3" width="200" />
 </div>
 
 ## Installation
