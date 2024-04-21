@@ -34,7 +34,7 @@ To run the Notes App on your iOS device or simulator, follow these steps:
 
 - Swift: The primary programming language used for iOS app development.
 - SwiftUI: A modern UI framework for building declarative user interfaces.
-- CoreData: A framework for managing the model layer objects in your application.
+- Realm: A mobile database framework for managing local data storage efficiently.
 
 ## Credits
 

@@ -7,63 +7,44 @@
 
 import Foundation
 import UIKit
-import CoreData
+import RealmSwift
 
 class CategoryViewController: UITableViewController {
-    var notes = [Note]()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var notes: Results<Note>?
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadNotes()
+        tableView.separatorStyle = .none
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadNotes()
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(.yellow)
+        guard let navBar = self.navigationController?.navigationBar else {fatalError("Navigation controller doesn't exist.")}
+        navBar.tintColor = UIColor(.black)
+        
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        //        guard let vc = storyboard?.instantiateViewController(identifier: "goToAddition") as! AddNewController as AddNewController{
-        //            return
-        //        }
-        //        navigationController?.pushViewController(vc, animated: true)
-        //        vc.title = "New Note"
-        
         performSegue(withIdentifier: "goToAddition", sender: self)
-        //        var textField = UITextField()
-        //
-        //        let alert = UIAlertController(title: "Add new note", message: "", preferredStyle: .alert)
-        //
-        //        let action = UIAlertAction(title: "Add note", style: .default) { action in
-        //            let newCategory = Note(context: self.context)
-        //            newCategory.title = textField.text!
-        //
-        //            self.noteCategoryArray.append(newCategory)
-        //            self.saveCategories()
-        //        }
-        //
-        //        alert.addTextField { field in
-        //            textField = field
-        //            textField.placeholder = "Create a new note"
-        ////            print(alertTextField.text)
-        //        }
-        //
-        //        alert.addAction(action)
-        //
-        //        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Table view data methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        return notes?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath)
         
-        let category = notes[indexPath.row]
-        cell.textLabel?.text = category.title
+        cell.textLabel?.text = notes?[indexPath.row].title ?? "No notes added yet"
         
         return cell
     }
@@ -77,7 +58,7 @@ class CategoryViewController: UITableViewController {
         let destinationVC = segue.destination as! AddNewController
         
         if let indexPath = tableView.indexPathForSelectedRow{
-            destinationVC.note = notes[indexPath.row]
+            destinationVC.note = notes?[indexPath.row]
         }
     }
     
@@ -94,25 +75,22 @@ class CategoryViewController: UITableViewController {
     }
     
     // MARK: - data manipulation methods
-    func loadNotes(with request: NSFetchRequest<Note> = Note.fetchRequest()) {
-        do {
-            notes = try context.fetch(request)
-        } catch {
-            print("Error loading data: \(error)")
-        }
+    func loadNotes() {
+        notes = realm.objects(Note.self).sorted(byKeyPath: "dateCreated", ascending: true)
         tableView.reloadData()
     }
     
     func deleteNote(at indexPath: IndexPath) {
-        let noteToDelete = notes[indexPath.row]
-        context.delete(noteToDelete)
-        
-        do {
-            try context.save()
-            notes.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } catch {
-            print("Error deleting note: \(error)")
+        if let noteForDeletion = notes?[indexPath.row]
+        {
+            do {
+                try realm.write {
+                    realm.delete(noteForDeletion)
+                    tableView.reloadData()
+                }
+            } catch{
+                print("Error deleting data, \(error)")
+            }
         }
     }
 }

@@ -1,28 +1,36 @@
 import UIKit
-import CoreData
+import RealmSwift
 
 class AddNewController: UIViewController {
     
     @IBOutlet weak var noteTitle: UITextField!
     @IBOutlet weak var noteContent: UITextView!
     
+    let realm = try! Realm()
     var note: Note?
-//    weak var delegate: AddNewControllerDelegate?
+    //    weak var delegate: AddNewControllerDelegate?
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         noteContent.delegate = self
         // Set the title text if available
-        noteTitle.text = note?.title
+        noteTitle.delegate = self
+        noteTitle.text = note?.title ?? "Enter your note title here..."
+        noteContent.text = note?.content ?? "Enter your note content here..."
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(.yellow)
+        guard let navBar = self.navigationController?.navigationBar else {fatalError("Navigation controller doesn't exist.")}
+        navBar.tintColor = UIColor(.black)
+        noteTitle.borderStyle = .none
         
-        // If content is available, set it in the text view
-        if let savedContent = note?.content {
-            noteContent.text = savedContent
-        } else {
-            noteContent.text = "Enter your note content here..." // Optional placeholder
-        }
+        navigationItem.standardAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        
     }
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
@@ -38,36 +46,23 @@ class AddNewController: UIViewController {
         
         note?.title = title
         note?.content = content
-        // Update the existing note's content if it exists, or create a new note if it doesn't
-        if let existingNote = fetchNoteWithTitle(title) {
-            existingNote.content = content
-        } else {
-            saveNote(title: title, content: content)
-        }
+        
+        saveNote(title: title, content: content)
         
         navigationController?.popViewController(animated: true)
     }
     
-    func fetchNoteWithTitle(_ title: String) -> Note? {
-        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "title == %@", title)
-        do {
-            let notes = try context.fetch(fetchRequest)
-            return notes.first
-        } catch {
-            print("Error fetching note: \(error)")
-            return nil
-        }
-    }
-    
     func saveNote(title: String, content: String) {
-        let newNote = Note(context: context)
-        newNote.title = title
-        newNote.content = content
-        do {
-            try context.save()
-        } catch {
-            print("Error saving note: \(error)")
+        try! realm.write {
+            if let existingNote = realm.objects(Note.self).filter("title == %@", title).first {
+                existingNote.content = content
+            } else {
+                let newNote = Note()
+                newNote.title = title
+                newNote.content = content
+                newNote.dateCreated = Date()
+                realm.add(newNote)
+            }
         }
     }
     
@@ -80,10 +75,20 @@ class AddNewController: UIViewController {
 }
 
 extension AddNewController: UITextViewDelegate {
-  func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.text == "Enter your note content here..." {
-      textView.text = "" // Clear placeholder text on tap
-      textView.textColor = .black // Optional: Set default text color
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Enter your note content here..." {
+            textView.text = "" // Clear placeholder text on tap
+            textView.textColor = .black // Optional: Set default text color
+        }
     }
-  }
+}
+
+extension AddNewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "Enter your note title here..." {
+//            textField.placeholder = ""
+            textField.text = ""
+            textField.textColor = .black
+        }
+    }
 }

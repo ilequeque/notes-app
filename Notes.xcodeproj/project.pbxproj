@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82EEDFD1004441CBB68862B5 /* Pods_Notes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFD860DB1533FCA07F41A29 /* Pods_Notes.framework */; };
+		FC2BC2C52BD5280700692BA5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2BC2C42BD5280700692BA5 /* Note.swift */; };
 		FC4DB3132BCF0C94008BA0FD /* AddNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4DB3122BCF0C94008BA0FD /* AddNewController.swift */; };
 		FC9C42F32BCDDBD900B483C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C42F22BCDDBD900B483C2 /* AppDelegate.swift */; };
 		FC9C42F52BCDDBD900B483C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C42F42BCDDBD900B483C2 /* SceneDelegate.swift */; };
 		FC9C42FA2BCDDBD900B483C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9C42F82BCDDBD900B483C2 /* Main.storyboard */; };
-		FC9C42FD2BCDDBD900B483C2 /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FC9C42FB2BCDDBD900B483C2 /* Notes.xcdatamodeld */; };
 		FC9C42FF2BCDDBDB00B483C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC9C42FE2BCDDBDB00B483C2 /* Assets.xcassets */; };
 		FC9C43022BCDDBDB00B483C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC9C43002BCDDBDB00B483C2 /* LaunchScreen.storyboard */; };
 		FC9C430A2BCEEAFE00B483C2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9C43092BCEEAFE00B483C2 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7FFD860DB1533FCA07F41A29 /* Pods_Notes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		904B5E26D53716A27B5BDED8 /* Pods-Notes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.debug.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.debug.xcconfig"; sourceTree = "<group>"; };
+		F96341229C33EAA74A497F60 /* Pods-Notes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes.release.xcconfig"; path = "Target Support Files/Pods-Notes/Pods-Notes.release.xcconfig"; sourceTree = "<group>"; };
+		FC2BC2C42BD5280700692BA5 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		FC4DB3122BCF0C94008BA0FD /* AddNewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewController.swift; sourceTree = "<group>"; };
 		FC9C42EF2BCDDBD900B483C2 /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9C42F22BCDDBD900B483C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC9C42F42BCDDBD900B483C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FC9C42F92BCDDBD900B483C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FC9C42FC2BCDDBD900B483C2 /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		FC9C42FE2BCDDBDB00B483C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC9C43012BCDDBDB00B483C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC9C43032BCDDBDB00B483C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,12 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82EEDFD1004441CBB68862B5 /* Pods_Notes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C312E897D07DCAC8C1E141C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				904B5E26D53716A27B5BDED8 /* Pods-Notes.debug.xcconfig */,
+				F96341229C33EAA74A497F60 /* Pods-Notes.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C9F59AE8CBDF87516B492D34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FFD860DB1533FCA07F41A29 /* Pods_Notes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC2BC2C32BD527BE00692BA5 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC2BC2C42BD5280700692BA5 /* Note.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
 		FC4DB3102BCF0C76008BA0FD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +93,8 @@
 			children = (
 				FC9C42F12BCDDBD900B483C2 /* Notes */,
 				FC9C42F02BCDDBD900B483C2 /* Products */,
+				C312E897D07DCAC8C1E141C0 /* Pods */,
+				C9F59AE8CBDF87516B492D34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,7 +115,7 @@
 				FC9C42FE2BCDDBDB00B483C2 /* Assets.xcassets */,
 				FC9C43002BCDDBDB00B483C2 /* LaunchScreen.storyboard */,
 				FC9C43032BCDDBDB00B483C2 /* Info.plist */,
-				FC9C42FB2BCDDBD900B483C2 /* Notes.xcdatamodeld */,
+				FC2BC2C32BD527BE00692BA5 /* Data Model */,
 				FC4DB3112BCF0C80008BA0FD /* Controller */,
 			);
 			path = Notes;
@@ -96,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC9C43062BCDDBDB00B483C2 /* Build configuration list for PBXNativeTarget "Notes" */;
 			buildPhases = (
+				82E24E8D95A237150C8D3243 /* [CP] Check Pods Manifest.lock */,
 				FC9C42EB2BCDDBD900B483C2 /* Sources */,
 				FC9C42EC2BCDDBD900B483C2 /* Frameworks */,
 				FC9C42ED2BCDDBD900B483C2 /* Resources */,
+				48FA88F07D17212441556635 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,6 +189,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		48FA88F07D17212441556635 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Notes/Pods-Notes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Notes/Pods-Notes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Notes/Pods-Notes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82E24E8D95A237150C8D3243 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Notes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FC9C42EB2BCDDBD900B483C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -163,8 +239,8 @@
 				FC9C42F32BCDDBD900B483C2 /* AppDelegate.swift in Sources */,
 				FC9C42F52BCDDBD900B483C2 /* SceneDelegate.swift in Sources */,
 				FC9C430A2BCEEAFE00B483C2 /* CategoryViewController.swift in Sources */,
-				FC9C42FD2BCDDBD900B483C2 /* Notes.xcdatamodeld in Sources */,
 				FC4DB3132BCF0C94008BA0FD /* AddNewController.swift in Sources */,
+				FC2BC2C52BD5280700692BA5 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,12 +387,14 @@
 		};
 		FC9C43072BCDDBDB00B483C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 904B5E26D53716A27B5BDED8 /* Pods-Notes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5FBTXDSGF4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Notes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -339,12 +417,14 @@
 		};
 		FC9C43082BCDDBDB00B483C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F96341229C33EAA74A497F60 /* Pods-Notes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5FBTXDSGF4;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Notes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -387,19 +467,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FC9C42FB2BCDDBD900B483C2 /* Notes.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FC9C42FC2BCDDBD900B483C2 /* Notes.xcdatamodel */,
-			);
-			currentVersion = FC9C42FC2BCDDBD900B483C2 /* Notes.xcdatamodel */;
-			path = Notes.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = FC9C42E72BCDDBD900B483C2 /* Project object */;
 }
